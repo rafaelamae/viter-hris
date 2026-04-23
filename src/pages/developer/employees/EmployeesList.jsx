@@ -48,7 +48,6 @@ const EmployeesList = ({ itemEdit, setItemEdit }) => {
       await queryDataInfinite(
         ``, // search endpoint
         `${apiVersion}/controllers/developers/employees/page.php?start=${pageParam}`, // list endpoint
-        // store.isSearch || isFilter, // search boolean, // search boolean
         false,
         {
           filterData,
@@ -127,6 +126,7 @@ const EmployeesList = ({ itemEdit, setItemEdit }) => {
               <th>Status</th>
               <th>Employee Name</th>
               <th>Email</th>
+              <th>Department</th> {/* NEW */}
               <th></th>
             </tr>
           </thead>
@@ -168,6 +168,7 @@ const EmployeesList = ({ itemEdit, setItemEdit }) => {
                         {item.employee_first_name} {item.employee_last_name}
                       </td>
                       <td>{item.employee_email}</td>
+                      <td>{item.department_name ?? "--"}</td> {/* NEW */}
                       <td>
                         <div className="flex items-center gap-3">
                           {item.employee_is_active == 1 ? (
