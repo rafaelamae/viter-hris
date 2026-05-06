@@ -9,6 +9,8 @@ class Employees
     public $employee_last_name;
     public $employee_email;
     public $employee_department_id; // NEW
+    public $employee_birthday;
+    public $employee_start_work_date;
     public $employee_created;
     public $employee_updated;
 
@@ -41,6 +43,8 @@ class Employees
             $sql .= " employee_last_name, ";
             $sql .= " employee_email, ";
             $sql .= " employee_department_id, "; // NEW
+            $sql .= " employee_birthday, ";
+            $sql .= " employee_start_work_date, ";
             $sql .= " employee_created, ";
             $sql .= " employee_updated ";
             $sql .= " ) values (";
@@ -50,6 +54,8 @@ class Employees
             $sql .= " :employee_last_name, ";
             $sql .= " :employee_email, ";
             $sql .= " :employee_department_id, "; // NEW
+            $sql .= " :employee_birthday, ";
+            $sql .= " :employee_start_work_date, ";
             $sql .= " :employee_created, ";
             $sql .= " :employee_updated ";
             $sql .= " ) ";
@@ -61,6 +67,8 @@ class Employees
                 "employee_last_name"     => $this->employee_last_name,
                 "employee_email"         => $this->employee_email,
                 "employee_department_id" => $this->employee_department_id, // NEW
+                "employee_birthday"      => $this->employee_birthday,
+                "employee_start_work_date" => $this->employee_start_work_date,
                 "employee_created"       => $this->employee_created,
                 "employee_updated"       => $this->employee_updated,
             ]);
@@ -169,6 +177,8 @@ class Employees
             $sql .= "employee_last_name     = :employee_last_name, ";
             $sql .= "employee_email         = :employee_email, ";
             $sql .= "employee_department_id = :employee_department_id, "; // NEW
+            $sql .= "employee_birthday      = :employee_birthday, ";
+            $sql .= "employee_start_work_date = :employee_start_work_date, ";
             $sql .= "employee_updated       = :employee_updated ";
             $sql .= "where employee_aid = :employee_aid ";
             $query = $this->connection->prepare($sql);
@@ -178,6 +188,8 @@ class Employees
                 "employee_last_name"     => $this->employee_last_name,
                 "employee_email"         => $this->employee_email,
                 "employee_department_id" => $this->employee_department_id, // NEW
+                "employee_birthday"      => $this->employee_birthday,
+                "employee_start_work_date" => $this->employee_start_work_date,
                 "employee_updated"       => $this->employee_updated,
                 "employee_aid"           => $this->employee_aid,
             ]);

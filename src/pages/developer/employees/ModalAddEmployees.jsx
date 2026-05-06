@@ -45,6 +45,10 @@ const ModalAddEmployees = ({ itemEdit, filterArrayActiveDepartments }) => {
         dispatch(setMessage(data.error));
       }
     },
+    onError: (error) => {
+      dispatch(setError(true));
+      dispatch(setMessage(error.message || "Unable to save employee."));
+    },
   });
 
   const initVal = {
@@ -55,6 +59,8 @@ const ModalAddEmployees = ({ itemEdit, filterArrayActiveDepartments }) => {
     employee_email: itemEdit ? itemEdit.employee_email : "",
     employee_department_id: itemEdit ? itemEdit.employee_department_id : "",
     employee_email_old: itemEdit ? itemEdit.employee_email : "",
+    employee_birthday: itemEdit ? itemEdit.employee_birthday : "",
+    employee_start_work_date: itemEdit ? itemEdit.employee_start_work_date : "",
   };
 
   const yupSchema = Yup.object({
@@ -167,6 +173,24 @@ const ModalAddEmployees = ({ itemEdit, filterArrayActiveDepartments }) => {
                         </InputSelect>
 
                         {store.error && <MessageError />}
+                      </div>
+
+                      <div className="relative mb-6">
+                        <InputText
+                          label="Birthday"
+                          name="employee_birthday"
+                          type="date"
+                          disabled={mutation.isPending}
+                        />
+                      </div>
+
+                      <div className="relative mb-6">
+                        <InputText
+                          label="Start Work Date"
+                          name="employee_start_work_date"
+                          type="date"
+                          disabled={mutation.isPending}
+                        />
                       </div>
                     </div>
                     <div className="modal-action">
